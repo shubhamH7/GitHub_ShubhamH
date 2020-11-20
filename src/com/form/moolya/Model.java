@@ -20,9 +20,9 @@ public class Model extends HttpServlet {
 	String un="system";
 	String pw="system";
 	
-	ArrayList al=new ArrayList();
-	ArrayList al1=new ArrayList();
-	ArrayList al2=new ArrayList();
+	ArrayList al  = new ArrayList();
+	ArrayList al1 = new ArrayList();
+	ArrayList al2 = new ArrayList();
 	
 	public Connection con;
 	public PreparedStatement pstmt;
@@ -146,5 +146,4 @@ public class Model extends HttpServlet {
 		System.out.println("Problem in result");
 	}
   }	
-	
 }

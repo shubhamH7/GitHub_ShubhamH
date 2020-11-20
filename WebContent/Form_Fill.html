@@ -47,7 +47,7 @@ body{
 
 .wrapper .form .inputfield label{
    width: 200px;
-   color: #00000;
+   color: #0000;
    margin-right: 10px;
   font-size: 14px;
 }
@@ -190,24 +190,27 @@ body{
 	<form action="Registration">
   <div class="wrapper">
       <div class="title">
-       Moolya Registration Form
+       Student Details
       </div>
 
       <div class="form" action="nxtpg.html">
          <div class="inputfield">
-            <label>UserName</label>
+            <label>Student Name</label>
             <input type="text" name="username" id= "usrname" class="input" placeholder="username" maxlength="15" required>
             <label id ="lbl1" style="color:red; visibility: hidden">Invalid</label>
          </div>
-
-
-         <div class="inputfield">
-          <label>Password</label>
-          <input type="password" name="password" id="pswd"  class="input" placeholder="Password" maxlength="8" required>
-          <label id ="lbl5" style="color:red; visibility: hidden">Invalid</label> 
-       </div>
+		
+		<div class="inputfield">
+            <label>Course_name</label>
+            <div class="Course_name">
+              <select name="course" placeholder="course" required>
+                <option value="">Select</option>
+                <option value="Abc">Male</option>
+                <option value="Xyz">Female</option>
+              </select>
+            </div>
+         </div>
          
-
          <div class="inputfield">
           <label>Phone Number</label>
           <input type="text" name="phone_number" id="num" class="input" placeholder="phone number" maxlength="10" required>
@@ -221,22 +224,8 @@ body{
         <label id ="lbl3" style="color:red; visibility: hidden">Invalid</label> 
      </div>
 
-
          <div class="inputfield">
-            <label>Gender</label>
-            <div class="custom_select">
-              <select name="gender" placeholder="Gender" required>
-                <option value="">Select</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-              </select>
-            </div>
-         </div>
-
-          
-
-         <div class="inputfield">
-          <label>Address</label>
+          <label>Total Marks</label>
           <textarea name="address" id = "addrs" class="textarea" placeholder="address"  required></textarea>
           <label id ="lbl4" style="color:red; visibility: hidden">Invalid</label> 
        </div>
@@ -244,132 +233,17 @@ body{
        
 
         <div class="inputfield">
-            <label>Pin Code</label>
+            <label>Pin CGPA</label>
             <input type="text" name= "pin_code" id="pincode" class="input" maxlength="6" placeholder="Pin Code" required>
             <label id ="lbl6" style="color:red; visibility: hidden">Invalid</label> 
          </div>
 
 
         <div class="inputfield">
-          <input onclick= "validate(); validateph(); validatemail(); validateaddress(); validatepassword(); validatepincode()" 
-          type="submit" value="Register" class="btn">
+          <input type="submit" value="Register" class="btn">
         </div>
       </div>
   </div>
   </form>
-
-  <!-- VALIDATION PART STARTS-->
-
-  
-<script>
-
-  //validating username
-  function validate() {
-    var username = document.getElementById("usrname").value;
-    var regx = /[a-z]{3}/;
-
-    if(regx.test(username))
-      {
-       document.getElementById("lbl1").innerHTML= "valid";
-       document.getElementById("lbl1").style.visibility= "visible";
-       document.getElementById("lbl1").style.color= "green";
-      }
-      else{
-        document.getElementById("lbl1").innerHTML= "Invalid";
-        document.getElementById("lbl1").style.visibility= "visible";
-        document.getElementById("lbl1").style.color= "red";
-      }
-  }
-  // validating phonenumber
-  function validateph() {
-    var phonenumber = document.getElementById("num").value;
-    var regx = /^[6789]\d{9}$/;
-
-     if(regx.test(phonenumber))
-     {
-       document.getElementById("lbl2").innerHTML="valid";
-       document.getElementById("lbl2").style.visibility="visible";
-       document.getElementById("lbl2").style.color= "green";
-     }
-     else{
-        document.getElementById("lbl2").innerHTML="Invalid";
-        document.getElementById("lbl2").style.visibility="visible";
-        document.getElementById("lbl2").style.color= "red";
-     }
-  }
-  //validating Email-id
-   function validatemail() {
-    var Email = document.getElementById("email").value;
-    var regx = /^([a-zA-Z0-9\.-]+)@([a-zA-Z0-9]+).([a-z]{2,20})$/g;
-
-     if(regx.test(Email))
-     {
-        document.getElementById("lbl3").innerHTML='valid';
-        document.getElementById("lbl3").style.visibility='visible';
-        document.getElementById("lbl3").style.color= 'green';
-     }
-     else{
-        document.getElementById("lbl3").innerHTML='Invalid';
-        document.getElementById("lbl3").style.visibility='visible';
-        document.getElementById("lbl3").style.color= 'red';
-     }
-   }
-
-
-   //validating Address
-   function validateaddress() {
-    var Address = document.getElementById("addrs").value;
-    var regx = /^[#a-zA-Z0-9\s,.'-]{3,}$/;
-
-     if(regx.test(Address))
-     {
-        document.getElementById("lbl4").innerHTML='valid';
-        document.getElementById("lbl4").style.visibility='visible';
-        document.getElementById("lbl4").style.color= 'green';
-     }
-     else{
-        document.getElementById("lbl4").innerHTML='Invalid';
-        document.getElementById("lbl4").style.visibility='visible';
-        document.getElementById("lbl4").style.color= 'red';
-     }
-   }
-
-   //validating password
-   function validatepassword() {
-    var password = document.getElementById("pswd").value;
-    var regx = /^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{7,}$/;
-
-     if(regx.test(password))
-     {
-        document.getElementById("lbl5").innerHTML='valid';
-        document.getElementById("lbl5").style.visibility='visible';
-        document.getElementById("lbl5").style.color= 'green';
-     }
-     else{
-        document.getElementById("lbl5").innerHTML='Invalid';
-        document.getElementById("lbl5").style.visibility='visible';
-        document.getElementById("lbl5").style.color= 'red';
-        alert("password should caontain atleat one digit, one upperscase letter,one lower case letter, and max lenght of 8 characters mwtioned from above ");
-     }
-   }
-
-   //validating pincode
-   function validatepincode() {
-    var pin = document.getElementById("pincode").value;
-    var regx = /[1-6]/g;
-
-     if(regx.test(pin))
-     {
-        document.getElementById("lbl6").innerHTML='valid';
-        document.getElementById("lbl6").style.visibility='visible';
-        document.getElementById("lbl6").style.color= 'green';
-     }
-     else{
-        document.getElementById("lbl6").innerHTML='Invalid';
-        document.getElementById("lbl6").style.visibility='visible';
-        document.getElementById("lbl6").style.color= 'red';
-     }
-   }
-</script>
 </body>
 </html>
